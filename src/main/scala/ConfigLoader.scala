@@ -3,6 +3,8 @@ import java.util
 
 import com.typesafe.config.ConfigFactory
 import kafka.utils.VerifiableProperties
+import net.liftweb.json.Extraction._
+import net.liftweb.json._
 import org.apache.kafka.common.serialization.Deserializer
 import org.apache.spark.SparkConf
 
@@ -31,14 +33,18 @@ object ConfigLoader {
     .setMaster(sparkMaster)
     .set("spark.executor.memory", sparkMemory)
     .set("spark.executor.core", sparkCores)
+    .registerKryoClasses(Array(classOf[DefaultFormats]))
 }
 
 case class Tweet(user: String, tweet: String) {
 
-  def getFilteredTweet: Tweet = {
+  implicit val formats: Formats = DefaultFormats
+
+  def getFilteredTweet: String = {
     val user = new String(this.user.toCharArray.filter(_.toString.matches("^[a-zA-z0-9]*$")))
     val tweet = new String(this.tweet.toCharArray.filter(_.toString.matches("^[a-zA-z0-9]*$")))
-    Tweet(user, tweet)
+    val filterTweet = Tweet(user, tweet)
+    compact(render(decompose(filterTweet)))
   }
 }
 
