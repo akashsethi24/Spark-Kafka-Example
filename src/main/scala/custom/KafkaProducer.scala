@@ -4,9 +4,6 @@ import java.util.Properties
 
 import custom.ConfigLoader.{kafkaClientId, kafkaServer, kafkaTopic}
 
-/**
-  * Created by akash on 28/6/17.
-  */
 object KafkaProducer {
 
   def main(args: Array[String]): Unit = {
@@ -15,11 +12,14 @@ object KafkaProducer {
     kafkaProperty.put("bootstrap.servers", kafkaServer)
     kafkaProperty.put("client.id", kafkaClientId)
     kafkaProperty.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer")
-    kafkaProperty.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer")
+    kafkaProperty.put("value.serializer", "custom.CustomCaseClassSerializer")
 
-    val kafkaProducer = new org.apache.kafka.clients.producer.KafkaProducer[String, String](kafkaProperty)
-    val producerRecord = new org.apache.kafka.clients.producer.ProducerRecord[String, String](kafkaTopic, "1", Tweet("Akash24", "Adele").getFilteredTweet)
-    1 to 25 map { number => kafkaProducer.send(producerRecord) }
+    val caseClassList = 1 to 25 map { index => CustomCaseClass(index, "Custom Name " + index) }
+    val kafkaProducer = new org.apache.kafka.clients.producer.KafkaProducer[String, CustomCaseClass](kafkaProperty)
 
+    caseClassList foreach { customCaseClassObj =>
+      val producerRecord = new org.apache.kafka.clients.producer.ProducerRecord[String, CustomCaseClass](kafkaTopic, "1", customCaseClassObj)
+      kafkaProducer.send(producerRecord)
+    }
   }
 }

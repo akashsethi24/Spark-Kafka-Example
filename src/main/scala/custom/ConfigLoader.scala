@@ -22,11 +22,6 @@ object ConfigLoader {
 
   val zookeeperUrl: String = configFactory.getString("zookeeper.server")
 
-  val tweetConsumerKey: String = configFactory.getString("twitter.consumer.key")
-  val tweetConsumerSecret: String = configFactory.getString("twitter.consumer.secret")
-  val tweetAccessToken: String = configFactory.getString("twitter.access.token")
-  val tweetAccessSecret: String = configFactory.getString("twitter.access.secret")
-
   val sparkConf: SparkConf = new SparkConf()
     .setAppName(sparkAppName)
     .setMaster(sparkMaster)
