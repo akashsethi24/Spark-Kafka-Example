@@ -1,4 +1,6 @@
 # Spark-Kafka-Stream-Example
+# Custom 
+
 This repo contains the Example of Spark Streaming using Apache Kafka.
 
 We are Feeding Case class Object to Apache Kafka via Kafka Producer and Fetching the same via Spark Streaming and printing the Case class Object in String Form.
@@ -14,6 +16,12 @@ We are Feeding Case class Object to Apache Kafka via Kafka Producer and Fetching
         Lift Json Version :- 2.6.2
 
 For Custom Topic Streaming Code is placed under custom Package
+
+We are using Custom Serilizer and DeSerializer for Custom Case class
+
+### Work In Progress
+### Implicitly Produce Kafka Topic using DataFrame
+### Implicitly Consume Kafka Topic using Spark Streaming
 
 Soemthing's wrong then raise an issue. <br>
 Happy Coding.
