@@ -1,6 +1,12 @@
-import ConfigLoader._
+package custom
+
 import java.util.Properties
 
+import custom.ConfigLoader.{kafkaClientId, kafkaServer, kafkaTopic}
+
+/**
+  * Created by akash on 28/6/17.
+  */
 object KafkaProducer {
 
   def main(args: Array[String]): Unit = {

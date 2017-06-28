@@ -1,11 +1,12 @@
-import ConfigLoader._
+package custom
+
+import custom.ConfigLoader.{kafkaServer, kafkaTopic, sparkConf, zookeeperUrl}
 import kafka.serializer.StringDecoder
+import net.liftweb.json.{DefaultFormats, parse}
 import org.apache.kafka.common.serialization.StringDeserializer
 import org.apache.spark.storage.StorageLevel
 import org.apache.spark.streaming.{Seconds, StreamingContext}
-import spray.json._
-import DefaultJsonProtocol._
-import net.liftweb.json._
+
 
 object KafkaConsumer {
 
@@ -34,8 +35,4 @@ object KafkaConsumer {
     sparkStreamingContext.awaitTermination()
   }
 
-  val castStringToCaseClass: (String) => Tweet = (value: String) => {
-    implicit val tweetFormat = jsonFormat2(Tweet)
-    value.toJson.convertTo[Tweet]
-  }
 }
