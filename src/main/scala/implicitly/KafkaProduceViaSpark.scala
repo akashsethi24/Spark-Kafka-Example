@@ -14,7 +14,7 @@ object KafkaProduceViaSpark {
 
   def main(args: Array[String]): Unit = {
 
-    val kafkaTopic = "sample"
+    val kafkaTopic = "testing"
     val nestedColumn = Array(col("id"), struct(col("name")).alias("person"))
     val sampleDF = spark.createDataFrame(Seq((1001, "Akash"), (1002, "Rishabh"), (1003, "Kunal")))
       .toDF("id", "name").select(nestedColumn: _*)
