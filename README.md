@@ -1,5 +1,5 @@
 # Spark-Kafka-Stream-Example
-# Custom 
+# Kafka Custom Serializable and Decoder
 
 This repo contains the Example of Spark Streaming using Apache Kafka.
 
@@ -10,9 +10,8 @@ We are Feeding Case class Object to Apache Kafka via Kafka Producer and Fetching
         Apache Kafka [Consumer] -> Spark Streaming -> CustomCaseClass(1, "Sample Name") -> Show.
         
 ##### We Are Using :- <br />
-        Spark Version :- 2.1.1
+        Spark Version :- 2.2.0
         Scala Version :- 2.11.8
-        Spark Streaming Version :- 2.0.0
         Lift Json Version :- 2.6.2
 
 For Custom Topic Streaming Code is placed under custom Package
