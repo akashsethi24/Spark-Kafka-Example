@@ -1,7 +1,6 @@
 package custom
 
 import com.typesafe.config.{Config, ConfigFactory}
-import net.liftweb.json.DefaultFormats
 import org.apache.spark.SparkConf
 
 /**
@@ -27,5 +26,4 @@ object ConfigLoader {
     .setMaster(sparkMaster)
     .set("spark.executor.memory", sparkMemory)
     .set("spark.executor.core", sparkCores)
-    .registerKryoClasses(Array(classOf[DefaultFormats]))
 }
