@@ -19,7 +19,7 @@ For Custom Topic Streaming Code is placed under custom Package
 
 We are using Custom Serilizer and DeSerializer for Custom Case class
 
-### Work In Progress
+### Recently Added
 ### Implicitly Produce Kafka Topic using DataFrame
 ### Implicitly Consume Kafka Topic using Spark Streaming
 
